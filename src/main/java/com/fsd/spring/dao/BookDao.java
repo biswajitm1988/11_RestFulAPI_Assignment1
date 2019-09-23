@@ -24,8 +24,8 @@ public class BookDao {
 		return bookRepository.findAll();
 	}
 
-	public Optional<Book> searchForBooks(String bookId) throws Exception {
-		return Optional.ofNullable(bookRepository.findByBookId(Long.parseLong(bookId)));
+	public Book searchForBooks(String bookId) throws Exception {
+		return bookRepository.findByBookId(Long.parseLong(bookId));
 	}
 
 	public void deleteBook(String bookId) throws Exception {

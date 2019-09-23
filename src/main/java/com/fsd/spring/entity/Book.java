@@ -31,7 +31,7 @@ public class Book {
 
 	@Column(name = "PUBLISH_DATE")
 	@Temporal(TemporalType.DATE)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "mm/dd/yy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yy", timezone = "America/New_York")
 	private Date publishDate;
 	
 	public Long getBookId() {

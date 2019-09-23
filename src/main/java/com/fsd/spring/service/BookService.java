@@ -29,17 +29,17 @@ public class BookService {
 		System.out.println("\nBook Added. Id=" + newBook.getBookId());
 		return newBook.getBookId();
 	}
-    public Optional<Book> searchBookById(String bookId) throws Exception {
+    public Book searchBookById(String bookId) throws Exception {
 		int count = bookDao.getAllBooks().size();
 		if (count == 0) {
 			System.out.println("There are no books in the system");
 			return null;
 		}
-		Optional<Book> book = bookDao.searchForBooks(bookId);
+		Book book = bookDao.searchForBooks(bookId);
 		if (book==null) {
 			System.out.println("no books found for your search : " + bookId);
 		} else {
-			System.out.println("Matching Books :\n" + book);
+			System.out.println("Matching Books :" + book);
 		}
 		return book;
     }
@@ -49,7 +49,7 @@ public class BookService {
 	}
 
 	public void updateBook(Book book) throws Exception {
-		Optional<Book> tempbook = bookDao.searchForBooks(String.valueOf(book.getBookId()));
+		Book tempbook = bookDao.searchForBooks(String.valueOf(book.getBookId()));
 		if (tempbook==null) {
 			System.out.println("no books found for your search : " + book.getBookId());
 		} else {

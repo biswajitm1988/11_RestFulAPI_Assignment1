@@ -30,23 +30,23 @@ public class BookController {
 
     @GetMapping("/getBookById/{bookId}")
     @ResponseBody
-    public Optional<Book> getBookById(@PathVariable(name = "bookId") String bookId) throws Exception {
-        System.out.println("Book Controller searchWithBookTitle >> "+bookId);
+    public Book getBookById(@PathVariable(name = "bookId") String bookId) throws Exception {
+        System.out.println("Book Controller getBookById >> "+bookId);
         return bookService.searchBookById(bookId);
     }
 
     @PostMapping("/addBook")
     @ResponseBody
     public List<Book> addBook(@RequestBody Book book) throws Exception {
-        System.out.println("Book Controller deleteWithBookTitle >> "+book);
+        System.out.println("Book Controller addBook >> "+book);
         long bookId = bookService.addBook(book);
         return bookService.getAllBooks();
     }
 
     @PutMapping("/updateBook")
     @ResponseBody
-    public Optional<Book> updateBook(@RequestBody Book book) throws Exception {
-        System.out.println("Book Controller deleteWithBookTitle >> "+book);
+    public Book updateBook(@RequestBody Book book) throws Exception {
+        System.out.println("Book Controller updateBook >> "+book);
         bookService.updateBook(book);
         return bookService.searchBookById(String.valueOf(book.getBookId()));
     }
